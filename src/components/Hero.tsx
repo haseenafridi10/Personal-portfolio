@@ -1,3 +1,5 @@
+'use client'
+import Typewriter from 'typewriter-effect';
 import React from 'react'
 import Navbar from './Navbar'
 
@@ -9,15 +11,11 @@ const Hero = () => {
     style={{backgroundSize: '25%', backgroundPosition: 'left 200px top 150px '}}
     > */}
     <div
-  id="hero"
-  className="min-h-screen bg-no-repeat bg-[url(/banner_bg.jpg)]  bg-cover"               
-  style={{
-    backgroundSize: '25%',
-    backgroundPosition: 'left 200px top 100px',
-    // width: '150px', // Adjust this based on your desired size
-    // height: '150px',
- // This makes the image round
-    // overflow: 'hidden' // Ensures the content within the div is contained
+    id="hero"
+    className="min-h-screen bg-no-repeat bg-[url(/banner_bg.jpeg)]  bg-cover"               
+    style={{
+      backgroundSize: '25%',
+      backgroundPosition: 'left 200px top 100px',
   }}
 >  
       <div className="container grid lg:grid-cols-2 h-[100vh-60px)]">
@@ -27,10 +25,20 @@ const Hero = () => {
                 <p data-aos="fade-up">I'm</p>
                 <p data-aos="fade-up">Haseen</p>
                 <p data-aos="fade-up">Afridi</p>
+                {/* <p> 
+                <Typewriter
+                  options={{
+                    strings: ['I`m <br> Haseen <br> Afridi'],
+                    autoStart: true,
+                    loop: true,
+                  }}
+                />
+                </p> */}
+                
             </div>
           </div>
         </div>
-  </div>
+       </div>
       
     </div>
   )

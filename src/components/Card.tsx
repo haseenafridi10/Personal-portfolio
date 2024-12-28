@@ -21,7 +21,6 @@ const Card: React.FC<propsType> = ({title, desc, img, tags}) => {
          />
       </div>
 
-
       <div className="p-4 space-y-4">
         <div className="text-4xl font-extralight">{title}</div>
         <div>{desc}</div>
