@@ -1,5 +1,3 @@
-'use client'
-import Typewriter from 'typewriter-effect';
 import React from 'react'
 import Navbar from './Navbar'
 
@@ -25,16 +23,6 @@ const Hero = () => {
                 <p data-aos="fade-up">I'm</p>
                 <p data-aos="fade-up">Haseen</p>
                 <p data-aos="fade-up">Afridi</p>
-                {/* <p> 
-                <Typewriter
-                  options={{
-                    strings: ['I`m <br> Haseen <br> Afridi'],
-                    autoStart: true,
-                    loop: true,
-                  }}
-                />
-                </p> */}
-                
             </div>
           </div>
         </div>
