@@ -20,7 +20,7 @@ const Hero = () => {
         <div className="hidden lg:block"></div>
         <div className="text-[80px] sm:text-[100px] font-bold leading-tight flex justify-center items-center text-white mt-20">
             <div>
-                <p data-aos="fade-up">I'm</p>
+                <p data-aos="fade-up">I m</p>
                 <p data-aos="fade-up">Haseen</p>
                 <p data-aos="fade-up">Afridi</p>
             </div>
