@@ -78,13 +78,13 @@ const Hero = () => {
           height={0}
           src="/banner_bg.jpeg" 
           alt="Decorative background pattern" 
-          className="hidden" 
+          className="" 
           aria-hidden="true"
         />
         
-        <div className="container grid grid-cols-1 lg:grid-cols-2 h-[calc(100vh-60px)]">
+        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 h-[calc(100vh-60px)] px-4">
           <div className="hidden lg:block" aria-hidden="true"></div>
-          <div className="text-[80px] sm:text-[130px] font-mono font-bold leading-tight flex justify-center lg:justify-center items-center text-white mb-14 px-16">
+          <div className="text-7xl sm:text-7xl lg:text-[130px] font-mono font-bold leading-tight flex justify-center lg:justify-center items-center text-white mb-14 px-16">
             <div>
               <h1 data-aos="fade-up" className="mb-0">I m</h1>
               <h2 data-aos="fade-up" className="mb-0">Haseen</h2>
