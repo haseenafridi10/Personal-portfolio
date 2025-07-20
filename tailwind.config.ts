@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,14 +8,23 @@ export default {
   ],
   theme: {
     extend: {
-      container:  {
-        center  : true,
-        padding  : '15px',
+      container: {
+        center: true,
+        padding: '15px',
+        screens: {
+          sm: '640px',
+          md: '768px',
+          lg: '1024px',
+          xl: '1140px',
+          '2xl': '1320px', // Optional
+        },
       },
       colors: {
-        accent: '#08E95E'
+        accent: '#08E95E',
       },
     },
   },
   plugins: [],
-} satisfies Config;
+};
+
+export default config;
