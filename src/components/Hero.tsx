@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
+import Image from 'next/image';
 
 const Hero = () => {
 
@@ -46,7 +47,7 @@ const Hero = () => {
     };
   }, []);
 
-  function debounce<T extends (...args: any[]) => void>(
+  function debounce<T extends (...args: unknown[]) => void>(
       fn: T,
       delay: number
     ): (...args: Parameters<T>) => void {
@@ -72,7 +73,9 @@ const Hero = () => {
         }}
       >  
         {/* Hidden image for SEO/accessibility */}
-        <img 
+        <Image
+          width={30}
+          height={30}
           src="/banner_bg.jpeg" 
           alt="Decorative background pattern" 
           className="hidden" 
@@ -83,7 +86,7 @@ const Hero = () => {
           <div className="hidden lg:block" aria-hidden="true"></div>
           <div className="text-[80px] sm:text-[130px] font-mono font-bold leading-tight flex justify-center lg:justify-center items-center text-white mb-14 px-16">
             <div>
-              <h1 data-aos="fade-up" className="mb-0">I'm</h1>
+              <h1 data-aos="fade-up" className="mb-0">I m</h1>
               <h2 data-aos="fade-up" className="mb-0">Haseen</h2>
               <h2 data-aos="fade-up" className="mb-0">Afridi</h2>
             </div>
