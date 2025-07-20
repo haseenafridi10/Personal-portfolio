@@ -32,7 +32,7 @@ export const data: project[] = [
         title: "Zoom clone - Bloom",
         desc: 'A video conferencing app developed for meeting and online classes using typescript.',
         img: '/project_03.jpeg',
-        url: 'zoom-clone-nopa.vercel.app',
+        url: 'https://zoom-clone-nopa.vercel.app',
         tags: ["Nextjs", "Tailwind", 'Typescript' ,'ClerkAuth'],
     }
 ];
