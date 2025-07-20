@@ -33,7 +33,7 @@ const Hero = () => {
       else { // Default desktop
         setbackgroundStyle({
           size: 'contain',
-          position: 'left 250px top 100px'
+          position: 'left top'
         });
       }
     };
