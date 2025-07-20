@@ -74,8 +74,8 @@ const Hero = () => {
       >  
         {/* Hidden image for SEO/accessibility */}
         <Image
-          width={30}
-          height={30}
+          width={0}
+          height={0}
           src="/banner_bg.jpeg" 
           alt="Decorative background pattern" 
           className="hidden" 
