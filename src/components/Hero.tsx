@@ -1,94 +1,51 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from './Navbar';
-import Image from 'next/image';
+import React, { useEffect, useState } from "react";
+import Navbar from "./Navbar";
 
 const Hero = () => {
-
-  const [backgroundStyle, setbackgroundStyle] = useState({
-      size: '80%', // Initialize with default desktop value
-    position: 'left 250px top 100px'
+  const [bgStyle, setBgStyle] = useState({
+    backgroundSize: "contain",
+    backgroundPosition: "left top",
   });
 
   useEffect(() => {
-    const updateBackground = () => {
+    const handleResize = () => {
       const width = window.innerWidth;
-      if (width <= 300) { // Extra small devices
-        setbackgroundStyle({
-          size: '60%',
-          position: 'left 10px top 200px'
-        });
-      }
-      else if (width <= 768) { // Mobile
-        setbackgroundStyle({
-          size: '40%',
-          position: 'right 10px top 100px'
-        });
-      } 
-      else if (width > 1920) { // Extra wide screens
-        setbackgroundStyle({
-          size: '15%', 
-          position: 'left 400px top 150px' 
-        });
-      }
-      else { // Default desktop
-        setbackgroundStyle({
-          size: 'contain',
-          position: 'left top '
-        });
+
+      if (width <= 300) {
+        setBgStyle({ backgroundSize: "60%", backgroundPosition: "left 10px top 200px" });
+      } else if (width <= 768) {
+        setBgStyle({ backgroundSize: "40%", backgroundPosition: "right 10px top 100px" });
+      } else if (width > 1920) {
+        setBgStyle({ backgroundSize: "15%", backgroundPosition: "left 400px top 150px" });
+      } else {
+        setBgStyle({ backgroundSize: "contain", backgroundPosition: "left top" });
       }
     };
 
-    updateBackground();
-
-     const debouncedResize = debounce(updateBackground, 100);
-    window.addEventListener('resize', debouncedResize);
-    return () => {
-      window.removeEventListener('resize', debouncedResize);
-    };
+    handleResize();
+    const debounced = debounce(handleResize, 100);
+    window.addEventListener("resize", debounced);
+    return () => window.removeEventListener("resize", debounced);
   }, []);
 
-  function debounce<T extends (...args: unknown[]) => void>(
-      fn: T,
-      delay: number
-    ): (...args: Parameters<T>) => void {
-      let timeoutId: ReturnType<typeof setTimeout>;
-      
-      return (...args: Parameters<T>) => {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => fn(...args), delay);
-      };
-    }
-  
   return (
-    <header role="banner" aria-label="Main hero section" className="relative">
+    <header role="banner" className="relative">
       <Navbar />
-      <section 
+      <section
         id="hero"
-        className="min-h-screen bg-no-repeat bg-cover"
+        className="min-h-screen bg-no-repeat bg-cover transition-all duration-300"
         style={{
-            backgroundImage: 'url(/banner_bg.jpeg)',
-            backgroundSize: backgroundStyle.size,
-            backgroundPosition: backgroundStyle.position,
-            transition: 'background-size 0.3s ease, background-position 0.3s ease'
+          backgroundImage: "url(/banner_bg.jpeg)",
+          ...bgStyle,
         }}
-      >  
-        {/* Hidden image for SEO/accessibility */}
-        <Image
-          width={0}
-          height={0}
-          src="/banner_bg.jpeg" 
-          alt="Decorative background pattern" 
-          className="" 
-          aria-hidden="true"
-        />
-        
+      >
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 h-[calc(100vh-60px)] px-4">
           <div className="hidden lg:block" aria-hidden="true"></div>
-          <div className="text-7xl sm:text-7xl lg:text-[130px] font-mono font-bold leading-tight flex justify-center lg:justify-center items-center text-white mb-14 px-16">
+          <div className="text-7xl sm:text-7xl lg:text-[130px] font-mono font-bold leading-tight flex justify-center items-center text-white mb-14 px-16">
             <div>
-              <h1 data-aos="fade-up" className="mb-0">I m</h1>
-              <h2 data-aos="fade-up" className="mb-0">Haseen</h2>
-              <h2 data-aos="fade-up" className="mb-0">Afridi</h2>
+              <h1 data-aos="fade-up">I m</h1>
+              <h2 data-aos="fade-up">Haseen</h2>
+              <h2 data-aos="fade-up">Afridi</h2>
             </div>
           </div>
         </div>
@@ -97,46 +54,13 @@ const Hero = () => {
   );
 };
 
+// ✅ Utility function outside component (prevents redefining on every render)
+function debounce<T extends (...args: any[]) => void>(fn: T, delay: number) {
+  let timeout: ReturnType<typeof setTimeout>;
+  return (...args: Parameters<T>) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => fn(...args), delay);
+  };
+}
+
 export default Hero;
-
-
-// import React from 'react';
-// import Navbar from './Navbar';
-// import Image from 'next/image';
-
-// const Hero = () => {
-//   return (
-//     <div>
-//       <Navbar />
-
-//       <section className="min-h-screen mt-12 flex flex-col sm:flex-row items-center sm:items-center justify-between px-6 sm:px-8 py-10 bg-black">
-
-        
-//         {/* Image Side */}
-//         <div className="w-full sm:w-1/2 flex justify-center sm:justify-end">
-//           <Image
-//             src="/banner_bg.jpeg"
-//             alt="Banner"
-//             width={400}
-//             height={400}
-//             className="w-full max-w-xs sm:max-w-sm md:max-w-md object-cover rounded-xl shadow-md"
-//           />
-//         </div>
-
-//         {/* Text Side */}
-//         <div className="w-full sm:w-1/2 flex justify-center sm:justify-start text-center sm:text-left mt-8 sm:mt-0">
-//           <div className="max-w-[90%]">
-//             <h1 className="text-white text-4xl md:text-6xl font-bold leading-snug space-y-2">
-//               <p data-aos="fade-up">I m</p>
-//               <p data-aos="fade-up">Haseen</p>
-//               <p data-aos="fade-up">Afridi</p>
-//             </h1>
-//           </div>
-//         </div>
-
-//       </section>
-//     </div>
-//   );
-// };
-
-// export default Hero;
